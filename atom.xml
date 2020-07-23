@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>ITBOY</title>
   
-  
+  <subtitle>啥都不是...</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://itboy-chencf.github.io/"/>
-  <updated>2020-07-22T17:28:39.575Z</updated>
+  <updated>2020-07-23T15:52:48.468Z</updated>
   <id>https://itboy-chencf.github.io/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>Chencf</name>
     
   </author>
   
@@ -20,8 +20,8 @@
     <title>Web网络基础</title>
     <link href="https://itboy-chencf.github.io/2020/07/23/web-an-quan-ji-chu/"/>
     <id>https://itboy-chencf.github.io/2020/07/23/web-an-quan-ji-chu/</id>
-    <published>2020-07-22T17:27:21.569Z</published>
-    <updated>2020-07-22T17:28:39.575Z</updated>
+    <published>2020-07-23T00:05:00.000Z</published>
+    <updated>2020-07-23T15:52:48.468Z</updated>
     
     <summary type="html">
     
@@ -29,16 +29,19 @@
       
         
         
-          &lt;blockquote&gt;
-&lt;p&gt;by chencf 2020/07/18&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;HTTP协议&quot;&gt;&lt;a href=&quot;#HTTP协议&quot; class=&quot;headerlink&quot;
+          &lt;h4 id=&quot;HTTP协议&quot;&gt;&lt;a href=&quot;#HTTP协议&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
     
     
+      <category term="网络安全" scheme="https://itboy-chencf.github.io/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="CTF" scheme="https://itboy-chencf.github.io/tags/CTF/"/>
+    
+      <category term="Web" scheme="https://itboy-chencf.github.io/tags/Web/"/>
     
   </entry>
   
