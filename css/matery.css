@@ -604,15 +604,15 @@ header .go-back i {
     background: linear-gradient(to right,#fff 0%,#44b1ec  100%);
     -webkit-background-clip: text;
     color: transparent;
-
-    
 }
 
 .bg-cover .description {
     font-weight: 300;
     font-size: 1.25rem;
     line-height: 1.4em;
-    color: #eee;
+    background: linear-gradient(to right,#44b1ec 0%,#fff  100%);
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 .bg-cover .post-title {
