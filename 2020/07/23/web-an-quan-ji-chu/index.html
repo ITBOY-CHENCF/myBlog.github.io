@@ -243,7 +243,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://106.52.86.96/202007030805/title.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -403,14 +403,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    2.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    8 分
                 </div>
                 
 
@@ -425,7 +425,13 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h4><ul>
+                <p><img src="http://106.52.86.96/202007030805/41313.jpg" alt=""></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近有幸能够参加某安全公司开展关于<code>网络安全</code>(运维安全、开发安全、网络攻防知识)为期20天培训课程，通过课程能够知悉常见网络攻击，攻击原理。对于日后自己开展安全管理工作以及自身技能的提高都非常有帮助，第一期主要关于Web安全攻击，必须做好总结记录下来  go  go  go  👍👍👍</p>
+<p>一切源于HTTP</p>
+<h4 id="HTTP协议分析"><a href="#HTTP协议分析" class="headerlink" title="HTTP协议分析"></a>HTTP协议分析</h4><blockquote>
+<p>基础部分不能丢，要掌握原理必须再从基础开始挖坑~😏</p>
+</blockquote>
+<ul>
 <li><strong>概述</strong></li>
 </ul>
 <p><code>HTTP</code> 协议(超文本传输协议HyperText Transfer Protocol)，它是基于TCP协议的应用层传输协议，简单来说就是客户端和服务端进行数据传输的一种规则。</p>
@@ -438,7 +444,7 @@
 <ul>
 <li><strong>URL</strong></li>
 </ul>
-<p><code>HTTP URL</code> 包含了用于查找某个资源的详细信息, 格式如下:</p>
+<p><code>HTTP URL</code> 包含了用于查找某个资源的详细信息, 格式如下：</p>
 <pre><code>http://host[&quot;:&quot;port][abs_path]</code></pre><hr>
 <ul>
 <li><p><strong>请求（Request）</strong></p>
@@ -452,6 +458,9 @@
 </blockquote>
 <hr>
 <p>常见的报文头的属性</p>
+<blockquote>
+<p><code>Content-Type</code>、<code>User-Agent</code> 都常用被用于模拟不同类型MIME、不太身份进行网络请求攻击包的篡改与替换。</p>
+</blockquote>
 <table>
 <thead>
 <tr>
@@ -575,35 +584,42 @@
 <p><code>HTTP</code>响应的第一行都是状态行，依次是当前HTTP版本号，3位数字组成的状态代码，以及描述状态的短语，彼此由空格分隔。</p>
 <p>状态代码的第一个数字代表当前响应的类型：</p>
 <ul>
-<li>1xx消息——请求已被服务器接收，继续处理</li>
-<li>2xx成功——请求已成功被服务器接收、理解、并接受</li>
-<li>3xx重定向——需要后续操作才能完成这一请求</li>
-<li>4xx请求错误——请求含有词法错误或者无法被执行</li>
-<li>5xx服务器错误——服务器在处理某个正确请求时发生错误</li>
+<li><p>1xx消息——请求已被服务器接收，继续处理</p>
+</li>
+<li><p>2xx成功——请求已成功被服务器接收、理解、并接受</p>
+</li>
+<li><p>3xx重定向——需要后续操作才能完成这一请求</p>
+</li>
+<li><p>4xx请求错误——请求含有词法错误或者无法被执行</p>
+</li>
+<li><p>5xx服务器错误——服务器在处理某个正确请求时发生错误</p>
+</li>
 </ul>
 <hr>
-<h4 id="CTF攻防比赛"><a href="#CTF攻防比赛" class="headerlink" title="CTF攻防比赛"></a>CTF攻防比赛</h4><p>CTF（Capture The Flag）中文一般译作夺旗赛，在网络安全领域中指的是网络安全技术人员之间进行技术竞技的一种比赛形式。CTF起源于1996年DEFCON全球黑客大会，以代替之前黑客们通过互相发起真实攻击进行技术比拼的方式。发展至今，已经成为全球范围网络安全圈流行的竞赛形式，2013年全球举办了超过五十场国际性CTF赛事。而DEFCON作为CTF赛制的发源地，DEFCON CTF也成为了目前全球最高技术水平和影响力的CTF竞赛，类似于CTF赛场中的“世界杯” 。</p>
+<h4 id="CTF攻防比赛"><a href="#CTF攻防比赛" class="headerlink" title="CTF攻防比赛"></a>CTF攻防比赛</h4><blockquote>
+<p>一直有所耳闻，但从未真正参与，希望未来有机会能打个最低级别的比赛。</p>
+</blockquote>
+<p>CTF（Capture The Flag）中文一般译作夺旗赛，在网络安全领域中指的是网络安全技术人员之间进行技术竞技的一种比赛形式。CTF起源于1996年DEFCON全球黑客大会，以代替之前黑客们通过互相发起真实攻击进行技术比拼的方式。发展至今，已经成为全球范围网络安全圈流行的竞赛形式，2013年全球举办了超过五十场国际性CTF赛事。而DEFCON作为CTF赛制的发源地，DEFCON CTF也成为了目前全球最高技术水平和影响力的CTF竞赛，类似于CTF赛场中的“世界杯” 。</p>
 <p>一、解题模式（Jeopardy）</p>
 <p>在解题模式CTF赛制中，参赛队伍可以通过互联网或者现场网络参与，这种模式的CTF竞赛与ACM编程竞赛、信息学奥赛比较类似，以解决网络安全技术挑战题目的分值和时间来排名，通常用于在线选拔赛。题目主要包含逆向、漏洞挖掘与利用、Web渗透、密码、取证、隐写、安全编程等类别。</p>
 <p>二、攻防模式（Attack-Defense）</p>
-<p>在攻防模式CTF赛制中，参赛队伍在网络空间互相进行攻击和防守，挖掘网络服务漏洞并攻击对手服务来得分，修补自身服务漏洞进行防御来避免丢分。攻防模式CTF赛制可以实时通过得分反映出比赛情况，最终也以得分直接分出胜负，是一种竞争激烈，具有很强观赏性和高度透明性的网络安全赛制。在这种赛制中，不仅仅是比参赛队员的智力和技术，也比体力（因为比赛一般都会持续48小时及以上），同时也比团队之间的分工配合与合作。 [1] </p>
+<p>在攻防模式CTF赛制中，参赛队伍在网络空间互相进行攻击和防守，挖掘网络服务漏洞并攻击对手服务来得分，修补自身服务漏洞进行防御来避免丢分。攻防模式CTF赛制可以实时通过得分反映出比赛情况，最终也以得分直接分出胜负，是一种竞争激烈，具有很强观赏性和高度透明性的网络安全赛制。在这种赛制中，不仅仅是比参赛队员的智力和技术，也比体力（因为比赛一般都会持续48小时及以上），同时也比团队之间的分工配合与合作。 </p>
 <p>三、混合模式（Mix）</p>
 <p>结合了解题模式与攻防模式的CTF赛制，比如参赛队伍通过解题可以获取一些初始分数，然后通过攻防对抗进行得分增减的零和游戏，最终以得分高低分出胜负。采用混合模式CTF赛制的典型代表如iCTF国际CTF竞赛。</p>
 <p>CTF常见题型：</p>
 <p>Web网络攻防、REVERSE逆向工程、Pwn二进制漏洞利用、Crypto密码攻击、Misc安全杂项、Mobile移动安全。</p>
 <hr>
 <h4 id="Web安全常用工具及插件"><a href="#Web安全常用工具及插件" class="headerlink" title="Web安全常用工具及插件"></a>Web安全常用工具及插件</h4><ul>
-<li><strong>Burp Suite</strong> 是用于攻击web 应用程序的集成平台，包含了许多工具。Burp Suite为这些工具设计了许多接口，以加快攻击应用程序的过程。所有工具都共享一个请求，并能处理对应的HTTP 消息、持久性、认证、代理、日志、警报</li>
+<li><strong><code>Burp Suite</code></strong> 是用于攻击web 应用程序的集成平台，包含了许多工具。Burp Suite为这些工具设计了许多接口，以加快攻击应用程序的过程。所有工具都共享一个请求，并能处理对应的HTTP 消息、持久性、认证、代理、日志、警报（<code>*必备工具</code>🔥）</li>
 </ul>
 <p><img src="http://106.52.86.96/202007030805/20200719194500.png" alt=""></p>
 <ul>
-<li><strong>中国蚁剑</strong>是一款开源的跨平台网站管理工具，它主要面向于合法授权的渗透测试安全人员以及进行常规操作的网站管理员。是一款非常优秀的<strong>WebShell</strong>管理工具。</li>
+<li><strong><code>中国蚁剑</code></strong>是一款开源的跨平台网站管理工具，它主要面向于合法授权的渗透测试安全人员以及进行常规操作的网站管理员。是一款非常优秀的<strong>WebShell</strong>管理工具。(与中国菜刀旗鼓相当，但是菜刀存在一定的漏洞后门，大家慎用!)</li>
 </ul>
 <p><img src="http://106.52.86.96/202007030805/20200719195336.png" alt=""></p>
 <ul>
-<li><strong>SqlMap</strong>是一个开源渗透测试工具，它可以自动检测和利用 SQL 注入漏洞并接管数据库服务器。它具有强大的检测引擎，同时有众多功能，包括数据库指纹识别、从数据库中获取数据、访问底层文件系统以及在操作系统上带内连接执行命令。</li>
+<li><strong><code>SqlMap</code></strong>是一个开源渗透测试工具，它可以自动检测和利用 SQL 注入漏洞并接管数据库服务器。它具有强大的检测引擎，同时有众多功能，包括数据库指纹识别、从数据库中获取数据、访问底层文件系统以及在操作系统上带内连接执行命令。(基于Python自动化实注入工具，功能是很强大，但是我不会~)<br><img src="http://106.52.86.96/202007030805/20200719200152.png" alt=""></li>
 </ul>
-<p><img src="http://106.52.86.96/202007030805/20200719200152.png" alt=""></p>
 
             </div>
             <hr/>
@@ -1111,8 +1127,7 @@
                 <a href="/2020/07/23/web-an-quan-ji-chu/">
                     <div class="card-image">
                         
-                        
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Web网络基础">
+                        <img src="http://106.52.86.96/202007030805/title.png" class="responsive-img" alt="Web网络基础">
                         
                         <span class="card-title">Web网络基础</span>
                     </div>
@@ -1338,7 +1353,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">2.2k</span>&nbsp;字
+                class="white-color">2.4k</span>&nbsp;字
             
             
             
