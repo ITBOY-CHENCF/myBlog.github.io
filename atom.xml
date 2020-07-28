@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://itboy-chencf.github.io/"/>
-  <updated>2020-07-27T17:07:19.894Z</updated>
+  <updated>2020-07-28T05:17:18.282Z</updated>
   <id>https://itboy-chencf.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://itboy-chencf.github.io/2020/07/28/pyq5-chu-ti-yan/"/>
     <id>https://itboy-chencf.github.io/2020/07/28/pyq5-chu-ti-yan/</id>
     <published>2020-07-28T00:05:00.000Z</published>
-    <updated>2020-07-27T17:07:19.894Z</updated>
+    <updated>2020-07-28T05:17:18.282Z</updated>
     
     <summary type="html">
     
@@ -29,23 +29,21 @@
       
         
         
-          &lt;p&gt;介绍&lt;/p&gt;
-&lt;p&gt;这是一篇从刚接触运维开始提高自己测试环境维护&lt;/p&gt;
-
+          &lt;p&gt;&lt;img src=&quot;http://106.52.86.96/202007281309/1.jpg&quot;
         
       
     
     </summary>
     
     
-      <category term="Pyqt" scheme="https://itboy-chencf.github.io/categories/Pyqt/"/>
+      <category term="Python" scheme="https://itboy-chencf.github.io/categories/Python/"/>
     
     
       <category term="运维" scheme="https://itboy-chencf.github.io/tags/%E8%BF%90%E7%BB%B4/"/>
     
       <category term="工具" scheme="https://itboy-chencf.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="python" scheme="https://itboy-chencf.github.io/tags/python/"/>
+      <category term="Pyqt5" scheme="https://itboy-chencf.github.io/tags/Pyqt5/"/>
     
   </entry>
   
@@ -54,7 +52,7 @@
     <link href="https://itboy-chencf.github.io/2020/07/23/web-an-quan-ji-chu/"/>
     <id>https://itboy-chencf.github.io/2020/07/23/web-an-quan-ji-chu/</id>
     <published>2020-07-23T00:05:00.000Z</published>
-    <updated>2020-07-28T00:41:40.909Z</updated>
+    <updated>2020-07-28T05:08:47.612Z</updated>
     
     <summary type="html">
     

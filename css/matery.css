@@ -570,7 +570,7 @@ header .go-back i {
 }
 
 .post-cover {
-    height: 40vh !important;
+    height: 35vh !important;
 }
 
 .bg-cover:after {
@@ -611,9 +611,6 @@ header .go-back i {
     font-weight: 300;
     font-size: 1.25rem;
     line-height: 1.4em;
-    background: linear-gradient(to right,#44b1ec 0%,#fff  100%);
-    -webkit-background-clip: text;
-    color: transparent;
 }
 
 .bg-cover .post-title {
