@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Pyqt5-运维管理工具, ITBOY">
-    <meta name="description" content="不太灵光、不爱洗头，爱好开发的安全、运维工作者">
+    <meta name="description" content="一位不爱洗头，爱开发的安全、运维工作者">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -111,7 +111,7 @@
         <div class="logo-name">ITBOY</div>
         <div class="logo-desc">
             
-            不太灵光、不爱洗头，爱好开发的安全、运维工作者
+            一位不爱洗头，爱开发的安全、运维工作者
             
         </div>
     </div>
@@ -167,7 +167,7 @@
         
         <li><div class="divider"></div></li>
         <li>
-            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+            <a href="https://itboy-chencf.github.io/" class="waves-effect waves-light" target="_blank">
                 <i class="fab fa-github-square fa-fw"></i>Fork Me
             </a>
         </li>
@@ -224,7 +224,7 @@
     }
 </style>
 
-<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+<a href="https://itboy-chencf.github.io/" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
    data-tooltip="Fork Me" data-position="left" data-delay="50">
     <svg viewBox="0 0 250 250" aria-hidden="true">
         <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
@@ -408,14 +408,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    24
+                    2.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    8 分
                 </div>
                 
 
@@ -430,9 +430,178 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="http://106.52.86.96/202007281309/1.jpg" alt=""></p>
-<p>介绍</p>
-<p>这是一篇从刚接触运维开始提高自己测试环境维护</p>
+                <p><img src="http://106.52.86.96/202007281309/06350.jpg" alt=""></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这是一篇关于之前自己对运维工具化开发的一些分享，其实自己对运维的线路理解的一直很浅，直到自己一步一步接触，逐步发挥一些自己的长处通过编写工具、编写脚本来提高日常运维管理的效率，开始自学Python语言，其实也不算学习，学习如何配置编译环境后，就直接上手开撸了，直蹦实现运维工具目的发出！</p>
+<h3 id="主要技术"><a href="#主要技术" class="headerlink" title="主要技术"></a>主要技术</h3><ul>
+<li><p>Python 2.7</p>
+<p>2.x 版本官方已经不再维护了，目前3.x 已经支持许多高级特性，建议大家如果真的开始接触Python的话还是直接上3.X版本，Python对运维工作者的友好性，我就不多说了，你懂的~</p>
+</li>
+</ul>
+<ul>
+<li><p>Pyqt5</p>
+<p>Python的图形化编程可利用的GUI 库多种多样，其中包括：<code>Tkinter</code>、<code>wxPython</code>、<code>Pywin</code>等，我曾经尝试过使用<code>Tkinter</code>，但是后来才发现<code>Tkinter</code>不持多线程，GUI的使用会导致页面卡死等待线程处理结束才能有响应，坑~~，转而开始使用了<code>Pyqt5</code>，<code>Pyqt5</code>是一套Python绑定Digia QT5应用的框架。它可用于2.x 和3.x 版本，主要借助事件、信号槽能够完成UI的动作指令，具有支持多线程、界面编辑可塑性强的特性。</p>
+</li>
+</ul>
+<ul>
+<li><p>Paramiko</p>
+<p>paramiko是用python语言写的一个模块，遵循SSH2协议，支持以加密和认证的方式，进行远程服务器的连接，包括命令执行、文件上传、下载，这也是制作Linux图形化运维工具最基本功能库。</p>
+</li>
+</ul>
+<ul>
+<li><p>Linux Shell</p>
+<p>工具目的是为解决手工维护命令执行，掌握基本的命令执行、Shell编写就能够制作一些实用的工具</p>
+<p>基本命令包括netstate、ps、top、grep等等</p>
+</li>
+</ul>
+<h3 id="界面制作"><a href="#界面制作" class="headerlink" title="界面制作"></a>界面制作</h3><p>通过QtDesigner设计界面，QtDesigner的设计符合MVC的架构，实现了视图和逻辑的分离，从而实现了开发的便捷，虽然不像Web前端那样网上很多实用的开源框架可以套用，但是利用QtDesigner的简单布局，制作工具的基本UI是没有太大问题的，想要设计更加美观的样式还是需要多拿捏一些（我想要的只要不要太丑就行。。）</p>
+<p><img src="http://106.52.86.96/202007281309/1231.png" alt=""></p>
+<p>*很关键的一点是QtDesigner设计的形成是以xxxx.ui形式的xml文件，不能够直接用于代码开发，但是能够通过转化将UI文件转化为.py文件用于工程的引用，为了方便起见我也直接把QtDesigner、pyuic都配置到Pycharm中去转化文件直接引用都非常快捷。</p>
+<p><img src="http://106.52.86.96/202007281309/image-20200730012928301.png" alt=""></p>
+<p><img src="http://106.52.86.96/202007281309/image-20200730013053939.png" alt=""></p>
+<p>转化执行的命令如下：</p>
+<pre class=" language-python"><code class="language-python">pyuic5 <span class="token operator">-</span>o xx<span class="token punctuation">.</span>py xxx<span class="token punctuation">.</span>ui    <span class="token comment" spellcheck="true">#转化ui为py文件</span></code></pre>
+<h3 id="工具登陆"><a href="#工具登陆" class="headerlink" title="工具登陆"></a>工具登陆</h3><blockquote>
+<p>登陆目标服务器需要的基本验证信息</p>
+</blockquote>
+<p><img src="http://106.52.86.96/202007281309/11.png" alt=""></p>
+<p>下面是登陆的简单实现代码：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">ssh_server</span><span class="token punctuation">(</span>command<span class="token punctuation">,</span> type<span class="token punctuation">)</span><span class="token punctuation">:</span>                    <span class="token comment" spellcheck="true">#利用paramiko简单使用登陆远程服务器</span>
+    <span class="token keyword">global</span> ip_val<span class="token punctuation">,</span> passwd_val<span class="token punctuation">,</span> user_val<span class="token punctuation">,</span>df_flag_first<span class="token punctuation">,</span>now_max_num<span class="token punctuation">,</span>last_max_num
+    ip <span class="token operator">=</span> ip_val
+    pwd <span class="token operator">=</span> passwd_val
+    user <span class="token operator">=</span> user_val
+    ssh <span class="token operator">=</span> paramiko<span class="token punctuation">.</span>SSHClient<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    ssh<span class="token punctuation">.</span>set_missing_host_key_policy<span class="token punctuation">(</span>paramiko<span class="token punctuation">.</span>AutoAddPolicy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        ssh<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>hostname<span class="token operator">=</span>ip<span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">22</span><span class="token punctuation">,</span> username<span class="token operator">=</span>user<span class="token punctuation">,</span> password<span class="token operator">=</span>pwd<span class="token punctuation">)</span>
+    <span class="token keyword">except</span> socket<span class="token punctuation">.</span>error<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">"socket.error"</span>                   <span class="token comment" spellcheck="true">#连接超时  </span>
+    <span class="token keyword">except</span> paramiko<span class="token punctuation">.</span>AuthenticationException<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">"AuthenticationException"</span>        <span class="token comment" spellcheck="true">#认证失败</span>
+    stdin<span class="token punctuation">,</span> stdout<span class="token punctuation">,</span> stderr <span class="token operator">=</span> ssh<span class="token punctuation">.</span>exec_command<span class="token punctuation">(</span>command<span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code></pre>
+<h3 id="物理状态"><a href="#物理状态" class="headerlink" title="物理状态"></a>物理状态</h3><blockquote>
+<p>包括<code>系统基本参数</code>、<code>磁盘空间情况</code>、<code>性能情况</code>、<code>CUP占用进程监控</code>，这些也是平时关注比较多的点，非实时刷新的信息状态。</p>
+</blockquote>
+<p>这一块对熟悉Linux基本命令也是非常有帮助的，熟悉了这些基本命令，操作系统基本信息获取也就轻而易举了。</p>
+<p><img src="http://106.52.86.96/202007281309/2.png" alt=""></p>
+<p>简单实现代码如下：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">UpdateStatusInfo</span><span class="token punctuation">(</span>QThread<span class="token punctuation">)</span><span class="token punctuation">:</span>   <span class="token comment" spellcheck="true">#同样主要通过paramiko进行命令执行回显需要信息参数</span>
+  ip_date <span class="token operator">=</span> pyqtSignal<span class="token punctuation">(</span>str<span class="token punctuation">,</span>str<span class="token punctuation">)</span>
+  <span class="token keyword">def</span> <span class="token function">run</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># CUP使用率</span>
+    main_W<span class="token punctuation">.</span>cup_used_lab_val<span class="token punctuation">.</span>setText<span class="token punctuation">(</span>
+        ssh_server<span class="token punctuation">(</span><span class="token string">"top -b -n 2 -d 0 | awk 'NR==3{print $5}'| awk -F \"%\" '{print 100-$1\"%\"}'"</span><span class="token punctuation">,</span> <span class="token string">"show"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 内存使用率</span>
+    main_W<span class="token punctuation">.</span>mem_used_lab_val<span class="token punctuation">.</span>setText<span class="token punctuation">(</span>
+      str<span class="token punctuation">(</span>round<span class="token punctuation">(</span>float<span class="token punctuation">(</span>ssh_server<span class="token punctuation">(</span><span class="token string">"free -m | awk 'NR==2{print 100-($4+$6+$7)*100/$2}'"</span><span class="token punctuation">,</span> <span class="token string">"show"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"%"</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 发行版本</span>
+    main_W<span class="token punctuation">.</span>version_val_lab<span class="token punctuation">.</span>setText<span class="token punctuation">(</span>ssh_server<span class="token punctuation">(</span><span class="token string">"cat /etc/redhat-release 2>/dev/null"</span><span class="token punctuation">,</span> <span class="token string">"show"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 语言编码</span>
+    main_W<span class="token punctuation">.</span>und_lab_val<span class="token punctuation">.</span>setText<span class="token punctuation">(</span>
+      ssh_server<span class="token punctuation">(</span><span class="token string">"grep \"LANG=\" /etc/sysconfig/i18n | grep -v \"^#\" | awk -F '\"' '{print $2}'"</span><span class="token punctuation">,</span> <span class="token string">"show"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 最后启动</span>
+    main_W<span class="token punctuation">.</span>lastup_lab_val<span class="token punctuation">.</span>setText<span class="token punctuation">(</span>ssh_server<span class="token punctuation">(</span><span class="token string">"who -b | awk '{print $3,$4}'"</span><span class="token punctuation">,</span> <span class="token string">"show"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 运行时间</span>
+    main_W<span class="token punctuation">.</span>run_lab_val<span class="token punctuation">.</span>setText<span class="token punctuation">(</span>ssh_server<span class="token punctuation">(</span><span class="token string">"uptime | sed 's/.*up \([^,]*\), .*/\\1/'"</span><span class="token punctuation">,</span> <span class="token string">"show"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># CUP TOP情况</span>
+    main_W<span class="token punctuation">.</span>top_lab_val<span class="token punctuation">.</span>setText<span class="token punctuation">(</span>
+      ssh_server<span class="token punctuation">(</span><span class="token string">"top b -n1 | head -18 | tail -13 | awk '{print $1,$2,$3,$9,$10,$11,$12,$13}'| column -t"</span><span class="token punctuation">,</span>
+            <span class="token string">"show_cup_top"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    print_ts<span class="token punctuation">(</span><span class="token string">"系统信息加载完成"</span><span class="token punctuation">)</span></code></pre>
+<h3 id="服务状态"><a href="#服务状态" class="headerlink" title="服务状态"></a>服务状态</h3><blockquote>
+<p>应用服务运行整体情况（应用服务启、停、服务状态、查看运行日志）</p>
+</blockquote>
+<p>应用服务管理是我最初设想完成的目标，之前通过TKinker实现了基本功能但是由于UI假死的不友好性被我无情抛弃，Pyqt的信号槽机制非常灵活，简单的理解就是利用事件绑定传递信号，通过信号槽接收信号处理信息。应用列表内容目前也都是代码写死的，不过改成配置文件形式加载也并不是什么难事，这样做的好处也是能够具有更好的工具通用性即使在其他环境下也能够管理服务。</p>
+<p><img src="http://106.52.86.96/202007281309/3.png" alt=""></p>
+<p>简单实现代码如下：</p>
+<pre class=" language-python"><code class="language-python">start_Btn<span class="token punctuation">.</span>clicked<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token keyword">lambda</span><span class="token punctuation">:</span> table_btn<span class="token punctuation">(</span>server_name<span class="token punctuation">,</span> port<span class="token punctuation">,</span> <span class="token string">"start"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#点击事件绑定执行函数</span></code></pre>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">up_list_single</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>                                          <span class="token comment" spellcheck="true">#定义启动单个服务线程启动函数</span>
+    self<span class="token punctuation">.</span>update_data_thread <span class="token operator">=</span> UpdateDataSingle<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    self<span class="token punctuation">.</span>update_data_thread<span class="token punctuation">.</span>update_date_single<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>update_item_data_single<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 链接信号</span>
+    self<span class="token punctuation">.</span>update_data_thread<span class="token punctuation">.</span>license_judge_msg<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>License_judge<span class="token punctuation">)</span>             <span class="token comment" spellcheck="true"># 链接信号</span>
+    self<span class="token punctuation">.</span>update_data_thread<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">UpdateDataSingle</span><span class="token punctuation">(</span>QThread<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""更新单个数据类"""</span>
+    update_date_single <span class="token operator">=</span> pyqtSignal<span class="token punctuation">(</span>str<span class="token punctuation">,</span> str<span class="token punctuation">,</span> str<span class="token punctuation">)</span>            <span class="token comment" spellcheck="true"># 接收信号  pyqt5 支持python3的str，没有Qstring</span>
+    license_judge_msg<span class="token operator">=</span>pyqtSignal<span class="token punctuation">(</span>str<span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">run</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">global</span> server_name_update<span class="token punctuation">,</span> cmd_update<span class="token punctuation">,</span> server_name_port
+        app <span class="token operator">=</span> server_name_update
+        cmd <span class="token operator">=</span> cmd_update
+        port <span class="token operator">=</span> server_name_port
+        self<span class="token punctuation">.</span>update_date_single<span class="token punctuation">.</span>emit<span class="token punctuation">(</span>str<span class="token punctuation">(</span>app<span class="token punctuation">)</span><span class="token punctuation">,</span> server_name_port<span class="token punctuation">,</span> str<span class="token punctuation">(</span>cmd<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        Server_btn_Cmd<span class="token punctuation">(</span>app<span class="token punctuation">,</span> port<span class="token punctuation">,</span> cmd<span class="token punctuation">)</span>
+        <span class="token keyword">print</span> app<span class="token punctuation">,</span> port<span class="token punctuation">,</span> cmd
+
+        <span class="token keyword">if</span> cmd_update <span class="token operator">==</span> <span class="token string">'start'</span><span class="token punctuation">:</span>
+            <span class="token keyword">while</span> <span class="token number">1</span><span class="token punctuation">:</span>
+                <span class="token keyword">if</span> IsOpen<span class="token punctuation">(</span>int<span class="token punctuation">(</span>port<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">'Running'</span><span class="token punctuation">:</span>
+                    pt_val <span class="token operator">=</span> app <span class="token operator">+</span> <span class="token string">":"</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>port<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">' 应用启动完成'</span>
+                    self<span class="token punctuation">.</span>update_date_single<span class="token punctuation">.</span>emit<span class="token punctuation">(</span>str<span class="token punctuation">(</span>app<span class="token punctuation">)</span><span class="token punctuation">,</span> server_name_port<span class="token punctuation">,</span> <span class="token string">"success"</span><span class="token punctuation">)</span>
+                    print_ts<span class="token punctuation">(</span>pt_val<span class="token punctuation">)</span>
+                    update_lab_num<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    self<span class="token punctuation">.</span>license_judge_msg<span class="token punctuation">.</span>emit<span class="token punctuation">(</span>str<span class="token punctuation">(</span>app<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
+<h3 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h3><blockquote>
+<p>针对不同类型应用服务环境部署进行一键式应用配置、应用数据库配置修改</p>
+</blockquote>
+<p>我之前所接触的环境部署工作，主要是虚机化环境下通过环境克隆快速复制出新环境，再通过执行编写好的Shell脚本对相应的配置项进行更改，更改的内容主要是包括应用IP地址这类参数，那么通过工具能够更快速的完成这一系列步骤。（当然这里我也非常想了解圈内其他同僚们对于一些环境部署搭建都会采用怎么样方式进行高效便捷方式，欢迎留言交流~）</p>
+<p><img src="http://106.52.86.96/202007281309/4.png" alt=""></p>
+<p>简单示例如下：</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#远程上传Shell文件</span>
+<span class="token keyword">def</span> <span class="token function">ssh_upload</span><span class="token punctuation">(</span>fromPath<span class="token punctuation">,</span>toPath<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    ssh <span class="token operator">=</span> paramiko<span class="token punctuation">.</span>SSHClient<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    ssh<span class="token punctuation">.</span>set_missing_host_key_policy<span class="token punctuation">(</span>paramiko<span class="token punctuation">.</span>AutoAddPolicy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    ssh<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>hostname<span class="token operator">=</span>ip<span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">22</span><span class="token punctuation">,</span> username<span class="token operator">=</span>user<span class="token punctuation">,</span> password<span class="token operator">=</span>pwd<span class="token punctuation">)</span>
+
+    sftp_client<span class="token operator">=</span>paramiko<span class="token punctuation">.</span>SFTPClient<span class="token punctuation">.</span>from_transport<span class="token punctuation">(</span>ssh<span class="token punctuation">.</span>get_transport<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        sftp_client<span class="token punctuation">.</span>put<span class="token punctuation">(</span>fromPath<span class="token punctuation">,</span> toPath<span class="token punctuation">)</span>
+    <span class="token keyword">except</span> Exception<span class="token punctuation">,</span>e<span class="token punctuation">:</span>
+        <span class="token keyword">print</span> str<span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+        reply <span class="token operator">=</span> QMessageBox<span class="token punctuation">.</span>question<span class="token punctuation">(</span>main_W<span class="token punctuation">,</span> <span class="token string">'提示'</span><span class="token punctuation">,</span> <span class="token string">"文件上传更新失败！！"</span><span class="token punctuation">,</span> QMessageBox<span class="token punctuation">.</span>Ok<span class="token punctuation">)</span>
+       sftp_client<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    ssh<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">#Linux Shell脚本中最核心内容总结起来就是一句话 #巧用grep + sed的批量匹配修改</span>
+grep <span class="token string">"$VALUE"</span> <span class="token operator">-</span>rl <span class="token punctuation">.</span><span class="token operator">/</span><span class="token operator">|</span>xargs sed <span class="token operator">-</span>i <span class="token string">"s#$VALUE#$NEW_VLAUE#g"</span> #查找目标内容并替换<span class="token operator">~</span></code></pre>
+<p>数据库环境虚机克隆后往往都会出现一些失效对象，那么就是需要手动再进行一次编译，工具也集成了这样的功能，简单实现方式如下：</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#ORACLE数据库 使用cx_Oracle模块用与oracle数据库连接</span>
+<span class="token keyword">class</span> <span class="token class-name">InvalidCommpile</span><span class="token punctuation">(</span>QThread<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    invalid_commpile_date<span class="token operator">=</span>pyqtSignal<span class="token punctuation">(</span>list<span class="token punctuation">,</span>str<span class="token punctuation">)</span>     <span class="token comment" spellcheck="true">#事件信号</span>
+    <span class="token keyword">def</span> <span class="token function">run</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        invalid_object_sql<span class="token operator">=</span><span class="token triple-quoted-string string">'''
+            select owner,object_name,replace(object_type,'','') object_type,status from all_objects where status='INVALID' 
+            '''</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            conn <span class="token operator">=</span> cx_Oracle<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token string">"用户名"</span><span class="token punctuation">,</span> <span class="token string">"密码"</span><span class="token punctuation">,</span> <span class="token string">"连接串"</span><span class="token punctuation">,</span>mode<span class="token operator">=</span>cx_Oracle<span class="token punctuation">.</span>SYSDBA<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">#连接数据</span>
+        <span class="token keyword">except</span> cx_Oracle<span class="token punctuation">.</span>DatabaseError <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+            print_ts<span class="token punctuation">(</span><span class="token string">"数据库连接异常"</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            cur <span class="token operator">=</span> conn<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span><span class="token punctuation">)</span>                   <span class="token comment" spellcheck="true">#数据游标</span>
+            cur<span class="token punctuation">.</span>execute<span class="token punctuation">(</span>invalid_object_sql<span class="token punctuation">)</span>       <span class="token comment" spellcheck="true">#执行查询</span>
+            result <span class="token operator">=</span> cur<span class="token punctuation">.</span>fetchall<span class="token punctuation">(</span><span class="token punctuation">)</span>               <span class="token comment" spellcheck="true">#获取数据集</span>
+            <span class="token keyword">for</span> item <span class="token keyword">in</span> result<span class="token punctuation">:</span>
+                <span class="token keyword">if</span> item<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token keyword">in</span> <span class="token punctuation">[</span><span class="token string">'INDEX'</span><span class="token punctuation">,</span><span class="token string">'VIEW'</span><span class="token punctuation">,</span><span class="token string">'PACKAGE BODY'</span><span class="token punctuation">,</span><span class="token string">'PROCEDURE'</span><span class="token punctuation">,</span><span class="token string">'TRIGGER'</span><span class="token punctuation">,</span><span class="token string">'FUNCTION'</span><span class="token punctuation">,</span><span class="token string">'TYPE'</span><span class="token punctuation">,</span><span class="token string">'PACKAGE'</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+                    owner<span class="token operator">=</span>str<span class="token punctuation">(</span>item<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                    object_name<span class="token operator">=</span>str<span class="token punctuation">(</span>item<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                    object_type<span class="token operator">=</span>str<span class="token punctuation">(</span>item<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                    sql_val <span class="token operator">=</span> <span class="token string">"alter"</span><span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span>object_type<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token string">'BODY'</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">" "</span><span class="token operator">+</span>owner<span class="token operator">+</span><span class="token string">"."</span><span class="token operator">+</span>object_name<span class="token operator">+</span><span class="token string">" "</span><span class="token operator">+</span><span class="token string">"compile"</span>          
+                    <span class="token keyword">try</span><span class="token punctuation">:</span>
+                        cur<span class="token punctuation">.</span>execute<span class="token punctuation">(</span>sql_val<span class="token punctuation">)</span>      <span class="token comment" spellcheck="true">#执行失效对象编译</span>
+                    <span class="token keyword">except</span> cx_Oracle<span class="token punctuation">.</span>DatabaseError <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+                        log_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span>time_val <span class="token operator">+</span> convert_val<span class="token punctuation">(</span>str<span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            cur<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            conn<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>自从自己学习Python掌握了一些工具开发的基本能力以后，发现其实还是有很多用武之地的，也陆陆续续制作了其他一些运维相关的日志采集工具、数据库版本备份工具、自动化取数平台、监控平台等等，代码写得肯定是不够好的，但是制定的基本目标功能都能够实现，无论是开发还是运维或者网络安全都还有很长的路要走。</p>
+<ul>
+<li>宁可做拼搏的失败者，也不要做安于现状的平凡人…….兄弟萌，冲鸭!</li>
+</ul>
+<p><img src="http://106.52.86.96/202007281309/cy1.jpg" alt=""></p>
 
             </div>
             <hr/>
@@ -458,7 +627,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://itboy-chencf.github.io/2020/07/28/pyq5-chu-ti-yan/">https://itboy-chencf.github.io/2020/07/28/pyq5-chu-ti-yan/</a>
+                    <a href="http://blog-itboy.cn/2020/07/28/pyq5-chu-ti-yan/">http://blog-itboy.cn/2020/07/28/pyq5-chu-ti-yan/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1189,7 +1358,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">2.4k</span>&nbsp;字
+                class="white-color">4.5k</span>&nbsp;字
             
             
             
