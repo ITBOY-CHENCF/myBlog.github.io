@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://itboy-chencf.github.io/"/>
-  <updated>2020-07-30T17:07:44.837Z</updated>
+  <updated>2020-09-07T05:01:25.057Z</updated>
   <id>https://itboy-chencf.github.io/</id>
   
   <author>
@@ -17,11 +17,69 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Upload-Labs靶场-通关手册</title>
+    <link href="https://itboy-chencf.github.io/2020/09/06/upload-labs-ba-chang-tong-guan-shou-ce/"/>
+    <id>https://itboy-chencf.github.io/2020/09/06/upload-labs-ba-chang-tong-guan-shou-ce/</id>
+    <published>2020-09-06T00:05:00.000Z</published>
+    <updated>2020-09-07T05:01:25.057Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="网络安全" scheme="https://itboy-chencf.github.io/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="CTF" scheme="https://itboy-chencf.github.io/tags/CTF/"/>
+    
+      <category term="Web" scheme="https://itboy-chencf.github.io/tags/Web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常见WEB攻击基础解读</title>
+    <link href="https://itboy-chencf.github.io/2020/08/23/web-lou-dong-gong-ji/"/>
+    <id>https://itboy-chencf.github.io/2020/08/23/web-lou-dong-gong-ji/</id>
+    <published>2020-08-23T00:05:00.000Z</published>
+    <updated>2020-09-07T05:19:17.128Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;Web 安全的对于 Web 从业人员来说是一个非常重要的课题 , 在这里也把自己培训学习内容进一步进行总结 Web
+        
+      
+    
+    </summary>
+    
+    
+      <category term="网络安全" scheme="https://itboy-chencf.github.io/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="CTF" scheme="https://itboy-chencf.github.io/tags/CTF/"/>
+    
+      <category term="Web" scheme="https://itboy-chencf.github.io/tags/Web/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Pyqt5-运维管理工具</title>
     <link href="https://itboy-chencf.github.io/2020/07/28/pyq5-chu-ti-yan/"/>
     <id>https://itboy-chencf.github.io/2020/07/28/pyq5-chu-ti-yan/</id>
     <published>2020-07-28T00:05:00.000Z</published>
-    <updated>2020-07-30T17:07:44.837Z</updated>
+    <updated>2020-09-07T05:05:27.371Z</updated>
     
     <summary type="html">
     
@@ -45,6 +103,35 @@
       <category term="工具" scheme="https://itboy-chencf.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
     
       <category term="Pyqt5" scheme="https://itboy-chencf.github.io/tags/Pyqt5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Web网络基础</title>
+    <link href="https://itboy-chencf.github.io/2020/07/23/web-an-quan-ji-chu/"/>
+    <id>https://itboy-chencf.github.io/2020/07/23/web-an-quan-ji-chu/</id>
+    <published>2020-07-23T00:05:00.000Z</published>
+    <updated>2020-09-07T05:23:37.907Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="网络安全" scheme="https://itboy-chencf.github.io/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="CTF" scheme="https://itboy-chencf.github.io/tags/CTF/"/>
+    
+      <category term="Web" scheme="https://itboy-chencf.github.io/tags/Web/"/>
     
   </entry>
   
